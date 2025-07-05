@@ -1,0 +1,12 @@
+[
+  {
+    "tipo": "gasto",
+    "valor": 30.0,
+    "categoria": "gasolina"
+  },
+  {
+    "tipo": "ganho",
+    "valor": 3000.0,
+    "categoria": "sálario"
+  }
+]
