@@ -11,8 +11,6 @@ TELEGRAM_TOKEN = '7808015731:AAEnusaNF7LI6-oAFw86B0mdPVjDit-F5fo'
 # 👉 URL da sua API que vai receber os dados (Spring Boot, por exemplo)
 API_URL = 'http://localhost:8080/api/lancamentos'  # Ajuste para sua URL real
 
-ARQUIVO_JSON = 'lancamentos.json'
-
 # Função para extrair dados da mensagem
 def extrair_info(mensagem):
     tipo = 'gasto' if 'gastei' in mensagem.lower() else 'ganho'
@@ -28,19 +26,6 @@ def extrair_info(mensagem):
         'valor': valor,
         'categoria': categoria
     }
-# Salva localmente em JSON
-def salvar_localmente(dado):
-    # Se o arquivo não existir, cria com lista vazia
-    if not os.path.exists(ARQUIVO_JSON):
-        with open(ARQUIVO_JSON, 'w') as f:
-            json.dump([], f)
-
-    # Lê o conteúdo existente e adiciona o novo
-    with open(ARQUIVO_JSON, 'r+') as f:
-        dados = json.load(f)
-        dados.append(dado)
-        f.seek(0)
-        json.dump(dados, f, indent=2)    
       
 # # Função que trata as mensagens recebidas do telegram e enviar ao --- BACK END
 async def tratar_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
