@@ -2,16 +2,17 @@ import re
 import requests
 import os
 from telegram import Update
-from dotenv import load_dotenv # Carrega as variáveis de ambiente do arquivo .env
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 
 
-load_dotenv() # Carrega as variáveis de ambiente do arquivo .env
 
-# Obtém as variáveis de ambiente
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')  # Substitua a linha hardcoded
-API_URL = os.getenv('API_URL')                # Substitua a linha hardcoded
+TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
+API_URL = os.environ.get('API_URL')
 
+
+# Verifica se as variáveis de ambiente estão definidas
+if not TELEGRAM_TOKEN or not API_URL:
+    raise ValueError("As variáveis de ambiente TELEGRAM_TOKEN e API_URL devem ser definidas.")
 
 # Função para extrair dados da mensagem
 def extrair_info(mensagem):
