@@ -1,13 +1,16 @@
 import re
 import requests
+import os
 from telegram import Update
+from dotenv import load_dotenv # Carrega as variáveis de ambiente do arquivo .env
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 
-# 👉 Coloque aqui o token do seu Bot
-TELEGRAM_TOKEN = '7808015731:AAEnusaNF7LI6-oAFw86B0mdPVjDit-F5fo'
 
-# 👉 URL da sua API que vai receber os dados (Spring Boot, por exemplo)
-API_URL = 'https://538355551420.ngrok-free.app/api/lancamentos'
+load_dotenv() # Carrega as variáveis de ambiente do arquivo .env
+
+# Obtém as variáveis de ambiente
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')  # Substitua a linha hardcoded
+API_URL = os.getenv('API_URL')                # Substitua a linha hardcoded
 
 
 # Função para extrair dados da mensagem
