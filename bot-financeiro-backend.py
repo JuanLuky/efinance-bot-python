@@ -7,7 +7,8 @@ from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTyp
 TELEGRAM_TOKEN = '7808015731:AAEnusaNF7LI6-oAFw86B0mdPVjDit-F5fo'
 
 # 👉 URL da sua API que vai receber os dados (Spring Boot, por exemplo)
-API_URL = 'http://localhost:8080/api/lancamentos'  # Ajuste para sua URL real
+API_URL = 'https://0075e321ecbe.ngrok-free.app/api/lancamentos'
+
 
 # Função para extrair dados da mensagem
 def extrair_info(mensagem):
@@ -52,9 +53,8 @@ async def main():
     await app.run_polling()
 
 # Rodar o bot
+# Inicializa e executa o bot
 if __name__ == '__main__':
-    from telegram.ext import ApplicationBuilder
-
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, tratar_mensagem))
 
