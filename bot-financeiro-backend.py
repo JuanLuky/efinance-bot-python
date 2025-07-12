@@ -7,7 +7,7 @@ from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTyp
 TELEGRAM_TOKEN = '7808015731:AAEnusaNF7LI6-oAFw86B0mdPVjDit-F5fo'
 
 # 👉 URL da sua API que vai receber os dados (Spring Boot, por exemplo)
-API_URL = 'https://0075e321ecbe.ngrok-free.app/api/lancamentos'
+API_URL = 'https://538355551420.ngrok-free.app/api/lancamentos'
 
 
 # Função para extrair dados da mensagem
