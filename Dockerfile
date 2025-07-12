@@ -11,6 +11,8 @@ WORKDIR /app
 # Copia os arquivos
 COPY . /app
 
+EXPOSE 5000
+
 # Instala dependências
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
