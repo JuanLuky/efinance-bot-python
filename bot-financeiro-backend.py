@@ -42,16 +42,6 @@ async def tratar_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Erro ao conectar com a API.")
         print(e)
 
-# Inicializa o bot
-async def main():
-    app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
-
-    # Escuta todas as mensagens de texto
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, tratar_mensagem))
-
-    print("🤖 Bot iniciado...")
-    await app.run_polling()
-
 # Rodar o bot
 # Inicializa e executa o bot
 if __name__ == '__main__':
