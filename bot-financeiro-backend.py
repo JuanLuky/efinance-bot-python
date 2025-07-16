@@ -34,9 +34,13 @@ def extrair_info(mensagem):
 async def tratar_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.message.from_user
     texto = update.message.text
+
+     # Garante que o username sempre terá um valor válido
+    username = f"@{user.username}" if user.username else f"user_{user.id}"
+
     dados = {
         **extrair_info(texto),
-        "telegram_id": f"@{user.username}" if user.username else f"user_{user.id}"
+        "telegram_username": username  # Campo corrigido (sem NULL)
     }
 
     # Envia para API
