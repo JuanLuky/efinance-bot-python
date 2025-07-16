@@ -32,8 +32,12 @@ def extrair_info(mensagem):
       
 # # Função que trata as mensagens recebidas do telegram e enviar ao --- BACK END
 async def tratar_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.message.from_user
     texto = update.message.text
-    dados = extrair_info(texto)
+    dados = {
+        **extrair_info(texto),
+        "telegram_id": f"@{user.username}" if user.username else f"user_{user.id}"
+    }
 
     # Envia para API
     try:
