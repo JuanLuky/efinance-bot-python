@@ -40,7 +40,7 @@ async def tratar_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     dados = {
         **extrair_info(texto),
-        "telegram_username": username  # Campo corrigido (sem NULL)
+        "telegramUsername": username  # Campo corrigido (sem NULL)
     }
 
     headers = {
