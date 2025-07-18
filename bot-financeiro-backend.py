@@ -43,9 +43,18 @@ async def tratar_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "telegram_username": username  # Campo corrigido (sem NULL)
     }
 
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+
     # Envia para API
     try:
-        response = requests.post(API_URL, json=dados)
+        response = requests.post(
+            API_URL, 
+            json=dados,
+            headers=headers
+            )
         if response.status_code == 201 or response.status_code == 200:
             await update.message.reply_text(f"✅ {dados['tipo'].capitalize()} de R$ {dados['valor']:.2f} registrado na categoria '{dados['categoria']}'!")
         else:
